@@ -42,7 +42,7 @@ module Grape
             # Try to fetch from server side cache
             # MemCacheStore's write method supports the :raw option
             # which tells the memcached server to store all values as strings.
-            cache = ::Grape::ShamanCache.config.cache
+            cache = Grape::ShamanCache.config.cache
             cache.fetch(cache_key, raw: true, expires_in: expire_time) do
               Grape::Formatter::Jbuilder.call block, env
             end
