@@ -18,7 +18,7 @@ Gem::Specification.new do |gem|
   gem.version       = Grape::ShamanCache::VERSION
 
   gem.add_dependency "grape", ">= 0.6.1"
-  gem.add_dependency "jbuilder"
+  gem.add_dependency "grape-jbuilder", "0.2.0"
   gem.add_dependency "activesupport"
 
   gem.add_development_dependency "bundler", "~> 1.3"
