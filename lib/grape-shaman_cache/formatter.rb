@@ -6,7 +6,7 @@ module Grape
       def self.call(object, env)
         # object is string means that we need to use cache
         return object if object.is_a?(String)
-
+        return new(object.call, env).call if object.is_a?(Proc)
         new(object, env).call
       end
     end

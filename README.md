@@ -52,6 +52,25 @@ class Welcome < Grape::API
 end
 ```
 
+or
+
+```
+class Welcome < Grape::API
+
+  include Grape::ShamanCache
+
+  format :json
+  formatter :json, Grape::Formatter::Jbuilder
+
+  get :home, jbuilder: 'welcome/home' do
+    cache(key: [:v2, :home], expires_in: 2.hours) do
+      @banners = Article.banner.without_gifts
+    end
+  end
+
+end
+```
+
 ## Configuration
 
 By default `Grape::ShamanCache` will use an instance of `ActiveSupport::Cache::MemoryStore` in a non-Rails application. You can configure it to use any other cache store.
